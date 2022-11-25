@@ -1,4 +1,4 @@
-1 source bin/activate
-2 cd webDND
-3 python manage.py startserver <ip or none>
+1 source bin/activate <br>
+2 cd webDND <br>
+3 python manage.py startserver <ip or none> <br>
 
