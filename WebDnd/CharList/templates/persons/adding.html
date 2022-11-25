@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<section>
+		<form action="/Persons/Adding" method="POST">
+		{% csrf_token %}
+		{{ Person_form.as_p }}
+		{{ Person_state_form.as_p }}
+		<input type="submit" value="Submit">
+		</form>
+	</section>
+{% endblock %}
