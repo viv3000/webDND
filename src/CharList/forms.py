@@ -11,7 +11,7 @@ class PersonForm(ModelForm):
             'race',
             'skills',
             'save_throws',
-            'main_class_dnd',
+            'main_class_dnd'
         ]
         
 
