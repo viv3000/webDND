@@ -3,7 +3,7 @@ from django.urls import include, path
 from .views import Home, Persons, Sessions
 
 urlpatterns = [
-    path('Users', include("django.contrib.auth.urls")),
+    path('Users/', include("django.contrib.auth.urls")),
 
     path('', Home, name="Home"),
 

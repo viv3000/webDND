@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from CharList.models import User
 from CharList.forms  import PersonForm, PersonStateForm
 
+
 def Home(request):
     return render(request=request, template_name="index.html", context={})
 
@@ -48,15 +49,20 @@ class Persons:
         charListForm = CharListForm(request.POST)
         context = {"Perso_form": charListForm}
         return HttpResponse(template.render(context,request))
-    
+
     def Adding(request): #/Persons/Adding
         if request.method == 'POST':
-            user = authenticate(username=request.POST['username'], password=request.POST['password'])
-            if user is None:
-                return render(request, 'registration/login.html', {})
+            if request.user.is_authenticated:
+                return redirect('/Persons/View');
             else:
-                return render(request, 'persons/adding.html', {})
+                return HttpResponse('no authorization then no save <a href="../..//Users/login">login</a>');
         else:
-            template = loader.get_template('persons/adding.html')
-            return HttpResponse(template.render({}, request))
-                    
+            if request.user.is_authenticated:
+                template = loader.get_template('persons/adding.html')
+                context = {
+                    'person_state_form': PersonStateForm,
+                    'person_form': PersonForm
+                }
+                return HttpResponse(template.render(context, request))
+            else:
+                return HttpResponse('no authorization then no access <a href="../..//Users/login">login</a>');
