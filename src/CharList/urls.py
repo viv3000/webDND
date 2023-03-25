@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('Sessions',                         Sessions.Sessions, name="Sessions"),
     path('Sessions/Adding',                  Sessions.Adding,   name="Session_add"),
+
     path('Sessions/Table/<int:Sessions_id>', Sessions.Session,  name="Session"),
 
     path('Sessions/Table/<int:Sessions_id>/Gamers/<int:User_id>',       Sessions.Session_gamer,       name="Session_gamer"),
